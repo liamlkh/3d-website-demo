@@ -4,7 +4,6 @@ import store from '@/store'
 import { useSelector } from 'react-redux'
 import { isMobile } from "react-device-detect"
 import { Canvas, useThree, useFrame } from "@react-three/fiber"
-import { OrbitControls } from '@react-three/drei'
 import { Physics, usePlane } from "@react-three/cannon"
 
 import {
@@ -140,11 +139,11 @@ const ThreeCanvas = () => {
 
   const onMouseDown = (e) => {
     updateMousePosition(e)
-    canvasRef.current.addEventListener("mousemove", updateMousePosition)
+    window.addEventListener("mousemove", updateMousePosition)
   }
 
   const onMouseUp = () => {
-    canvasRef.current.removeEventListener("mousemove", updateMousePosition)
+    window.removeEventListener("mousemove", updateMousePosition)
   }
 
   const onTouchMove = (e) => {
@@ -207,12 +206,11 @@ const ThreeCanvas = () => {
                 return <SectionObject position={pos} rotation={rot} name={location} />
               })}
             </group>
-            {/* <Box position={[-15, 0, 10]} rotation={[0, -Math.PI * 0.2, 0]}/> */}
-            {/* <Box position={[20, 0, 20]} /> */}
+            <Cube position={[-30, 0, 8]} rotation={[0, -Math.PI * 0.2, 0]}/>
+            <Cube position={[35, 0, 6]} />
           </Physics>
         </Suspense>
         <Effects/>
-        {/* <OrbitControls/> */}
       </Canvas>
     </CanvasWrapper>
   )

@@ -5,7 +5,7 @@ export default function Box(props) {
 
   const { name, position, rotation, color } = props
 
-  const [physicsRef, api] = useBox(() => ({  
+  const [physicsRef] = useBox(() => ({  
     position: [position[0], 4, position[2]],
     rotation: rotation,
     mass: 100,
